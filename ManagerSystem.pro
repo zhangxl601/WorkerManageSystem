@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     workerinfo.cpp \
     removedlg.cpp \
-    addworkdlg.cpp
+    addworkdlg.cpp \
+    workersmanage.cpp
 
 HEADERS += \
         mainwindow.h \
     workerinfo.h \
     removedlg.h \
-    addworkdlg.h
+    addworkdlg.h \
+    workersmanage.h
 
 FORMS += \
         mainwindow.ui \

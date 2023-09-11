@@ -2,7 +2,7 @@
 #define ADDWORKDLG_H
 
 #include <QDialog>
-
+#include "workerinfo.h"
 namespace Ui {
 class AddWorkDlg;
 }
@@ -14,6 +14,7 @@ class AddWorkDlg : public QDialog
 public:
     explicit AddWorkDlg(QWidget *parent = nullptr);
     ~AddWorkDlg();
+
 
 private:
     Ui::AddWorkDlg *ui;

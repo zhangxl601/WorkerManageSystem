@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include "workersmanage.h"
+class WorkerInfo;
 namespace Ui {
 class MainWindow;
 }
@@ -22,7 +24,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QStandardItemModel* model;
+    WorkersManage workersManager;
+    QList<WorkerInfo> workers;
 };
 
 #endif // MAINWINDOW_H
