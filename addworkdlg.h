@@ -16,6 +16,9 @@ public:
     ~AddWorkDlg();
 
 
+private slots:
+    void on_btnOk_clicked();
+
 private:
     Ui::AddWorkDlg *ui;
 };

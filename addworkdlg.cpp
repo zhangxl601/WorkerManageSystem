@@ -12,3 +12,11 @@ AddWorkDlg::~AddWorkDlg()
 {
     delete ui;
 }
+
+void AddWorkDlg::on_btnOk_clicked()
+{
+    // 保存信息
+
+
+    accept();
+}

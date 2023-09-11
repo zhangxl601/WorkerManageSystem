@@ -11,7 +11,7 @@ class WorkersManage : public QObject
 public:
     explicit WorkersManage(QObject *parent = nullptr);
 
-    void addWorker(Worker worker);
+    void addWorker(const WorkerData &data);
     void findWorker();
     void removeWorker();
     void modifyWorker();

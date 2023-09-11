@@ -7,6 +7,11 @@ WorkersManage::WorkersManage(QObject *parent) : QObject(parent)
     model->setHorizontalHeaderLabels(horiHeader);
 }
 
+void WorkersManage::addWorker(const WorkerData &data)
+{
+
+}
+
 void WorkersManage::openFile(QString fileName)
 {
     //打开文件

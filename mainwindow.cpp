@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QStandardItemModel* model = workersManager.getModel();
     ui->display_table->setModel(model);
+
+    addDlg = new AddWorkDlg(this);
 }
 
 MainWindow::~MainWindow()
@@ -40,4 +42,11 @@ void MainWindow::on_savefile_triggered()
         return;
     }
     workersManager.saveFile(fileName);
+}
+
+void MainWindow::on_add_triggered()
+{
+    if(AddWorkDlg::Accepted == addDlg->exec()){
+//        workersManager.addWorker();
+    }
 }

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QStandardItemModel>
 #include "workersmanage.h"
+#include "addworkdlg.h"
 class WorkerInfo;
 namespace Ui {
 class MainWindow;
@@ -22,10 +23,13 @@ private slots:
 
     void on_savefile_triggered();
 
+    void on_add_triggered();
+
 private:
     Ui::MainWindow *ui;
     WorkersManage workersManager;
-    QList<WorkerInfo> workers;
+
+    AddWorkDlg *addDlg;
 };
 
 #endif // MAINWINDOW_H
