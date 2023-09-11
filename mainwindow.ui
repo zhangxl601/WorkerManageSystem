@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>716</width>
+    <height>446</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTableView" name="display_table">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>671</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>716</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="infomanage">
+    <property name="title">
+     <string>信息管理</string>
+    </property>
+    <addaction name="add"/>
+    <addaction name="remove"/>
+    <addaction name="qurey"/>
+    <addaction name="modify"/>
+   </widget>
+   <widget class="QMenu" name="file">
+    <property name="title">
+     <string>文件操作</string>
+    </property>
+    <addaction name="openfile"/>
+    <addaction name="savefile"/>
+   </widget>
+   <addaction name="file"/>
+   <addaction name="infomanage"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="add"/>
+   <addaction name="separator"/>
+   <addaction name="remove"/>
+   <addaction name="separator"/>
+   <addaction name="qurey"/>
+   <addaction name="separator"/>
+   <addaction name="modify"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="openfile">
+   <property name="text">
+    <string>打开文件</string>
+   </property>
+  </action>
+  <action name="savefile">
+   <property name="text">
+    <string>保存文件</string>
+   </property>
+  </action>
+  <action name="add">
+   <property name="text">
+    <string>添加职工</string>
+   </property>
+  </action>
+  <action name="remove">
+   <property name="icon">
+    <iconset>
+     <normaloff>../AMCSCOPE-10G-V2.1.0/PanelSubSystem/image/MessageError.png</normaloff>../AMCSCOPE-10G-V2.1.0/PanelSubSystem/image/MessageError.png</iconset>
+   </property>
+   <property name="text">
+    <string>删除职工</string>
+   </property>
+  </action>
+  <action name="qurey">
+   <property name="text">
+    <string>查询职工</string>
+   </property>
+  </action>
+  <action name="modify">
+   <property name="text">
+    <string>修改职工信息</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
