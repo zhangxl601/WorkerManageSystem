@@ -1,6 +1,6 @@
 #include "finddlg.h"
 #include "ui_finddlg.h"
-
+#include <QMessageBox>
 FindDlg::FindDlg(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::FindDlg)
@@ -19,6 +19,8 @@ void FindDlg::on_pushButton_clicked()
     if(ui->txName->text()!=""){
         workerName = ui->txName->text();
         emit Sig_find();
+    }else {
+        QMessageBox::about(this,tr("提示"),tr("姓名不能为空"));
     }
 }
 

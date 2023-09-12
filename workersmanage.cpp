@@ -21,7 +21,7 @@ void WorkersManage::addWorker(const WorkerData &data)
     updateModel(workers);
 }
 
-void WorkersManage::findWorker(QString name)
+bool WorkersManage::findWorker(QString name)
 {
     QList<Worker*> listTmp;
     for (auto i:workers) {
@@ -31,7 +31,11 @@ void WorkersManage::findWorker(QString name)
             listTmp.append(i);
         }
     }
+    if(listTmp.isEmpty()){
+        return false;
+    }
     updateModel(listTmp);
+    return true;
 }
 
 void WorkersManage::removeWorker(QString name)
@@ -102,7 +106,7 @@ void WorkersManage::saveFile(QString fileName)
     if(!workers.isEmpty()){
         //表头
         out<<horiHeader.join(",")<<"\n";
-        int count = workers.size();
+        int count = workers.size()-1;
         for (int i = 0; i < count; ++i) {
             Worker* data = workers.at(i);
             out <<data->getCsvString();

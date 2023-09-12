@@ -6,7 +6,7 @@
 #include <QStringList>
 #include <QFileDialog>
 #include <QTextStream>
-
+#include <QMessageBox>
 extern int gRole;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -39,7 +39,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::findResult()
 {
-    workersManager.findWorker(findDlg->getWorker());
+    if(!workersManager.findWorker(findDlg->getWorker())){
+        QMessageBox::about(this,tr("提示"),tr("未查询到该员工!请核实姓名"));
+    }
 }
 
 void MainWindow::displayAllWorker()
@@ -109,5 +111,7 @@ void MainWindow::on_modify_triggered()
         if(ModifyDlg::Accepted == modifyDlg->exec()){
             workersManager.modifyWorker(modifyDlg->getWorker());
         }
+    }else {
+        QMessageBox::about(this,tr("提示"),tr("未选中需要修改员工!请选择员工!"));
     }
 }

@@ -12,7 +12,7 @@ public:
     explicit WorkersManage(QObject *parent = nullptr);
 
     void addWorker(const WorkerData &data);
-    void findWorker(QString name);
+    bool findWorker(QString name);
     void removeWorker(QString name);
     void modifyWorker(const WorkerData &data);
 
