@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>remove.webp</file>
+        <file>add.jpg</file>
+        <file>remove.png</file>
+    </qresource>
+</RCC>

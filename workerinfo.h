@@ -15,6 +15,7 @@ struct WorkerData
     int m_salary;
     int m_isMarried;//0:N 1:Y
     int m_number;//编号
+
 };
 
 class Worker
@@ -23,19 +24,26 @@ class Worker
 public:
     explicit Worker();
 
+    Worker(const WorkerData& workerData);
     Worker(QString name,int age,int sex,QString birth,QString title,QString education,int salary,int marry,int number);
 
+    void modifyWorker(const WorkerData& data);
 
-    static Worker parseString(const QString);
+    static Worker* parseString(const QString);
 
     QString getCsvString();
+
+    bool isValid(){return mIsValid;}
 
 
     QString origInfo;
     QStringList infoList;
     WorkerData m_data;
 
+    bool mIsValid;
+
 private:
+
 
 };
 

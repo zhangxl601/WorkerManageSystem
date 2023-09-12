@@ -30,22 +30,36 @@ SOURCES += \
     workerinfo.cpp \
     removedlg.cpp \
     addworkdlg.cpp \
-    workersmanage.cpp
+    workersmanage.cpp \
+    finddlg.cpp \
+    modifydlg.cpp
 
 HEADERS += \
         mainwindow.h \
     workerinfo.h \
     removedlg.h \
     addworkdlg.h \
-    workersmanage.h
+    workersmanage.h \
+    finddlg.h \
+    modifydlg.h
 
 FORMS += \
         mainwindow.ui \
     addworkdlg.ui \
     removedlg.ui \
-    addworkdlg.ui
+    addworkdlg.ui \
+    finddlg.ui \
+    modifydlg.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    add.jpg \
+    remove.png \
+    remove.webp
+
+RESOURCES += \
+    res.qrc

@@ -12,22 +12,27 @@ public:
     explicit WorkersManage(QObject *parent = nullptr);
 
     void addWorker(const WorkerData &data);
-    void findWorker();
-    void removeWorker();
-    void modifyWorker();
+    void findWorker(QString name);
+    void removeWorker(QString name);
+    void modifyWorker(const WorkerData &data);
 
     void openFile(QString fileName);
     void saveFile(QString fileName);
 
     QStandardItemModel* getModel();
+    QList<Worker*> getWorkers();
+
+    void updateModel(QList<Worker*> _workers);
 signals:
 
 public slots:
 
 private:
-    QList<Worker> workers;
+
+    QList<Worker*> workers;
     QStandardItemModel* model;
 //    QStringList horiHeader;
+    int m_maxNumber;
 };
 
 #endif // WORKERSMANAGE_H

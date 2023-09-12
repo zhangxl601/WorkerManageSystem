@@ -15,12 +15,15 @@ public:
     explicit AddWorkDlg(QWidget *parent = nullptr);
     ~AddWorkDlg();
 
-
+    WorkerData getWorkerData();
 private slots:
     void on_btnOk_clicked();
 
+    void on_btnCancel_clicked();
+
 private:
     Ui::AddWorkDlg *ui;
+    WorkerData m_data;
 };
 
 #endif // ADDWORKDLG_H

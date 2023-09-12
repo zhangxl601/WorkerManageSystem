@@ -14,9 +14,14 @@ class RemoveDlg : public QDialog
 public:
     explicit RemoveDlg(QWidget *parent = nullptr);
     ~RemoveDlg();
+    QString getDeleteName();
+
+private slots:
+    void on_txDelete_clicked();
 
 private:
     Ui::RemoveDlg *ui;
+    QString deleteName;
 };
 
 #endif // REMOVEDLG_H
