@@ -30,6 +30,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(findDlg,&FindDlg::Sig_find,this,&MainWindow::findResult);
     connect(findDlg,&FindDlg::Sig_Cancel,this,&MainWindow::displayAllWorker);
     connect(findDlg,&FindDlg::finished,this,&MainWindow::displayAllWorker);
+
+    Worker work;
+    QList<WorkerData > list = work.getInitData();
+    for(auto i:list){
+        workersManager.addWorker(i);
+    }
 }
 
 MainWindow::~MainWindow()

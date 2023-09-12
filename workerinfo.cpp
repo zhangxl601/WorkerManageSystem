@@ -71,3 +71,28 @@ QString Worker::getCsvString()
     list << QString::number(m_data.m_number);
     return list.join(",");
 }
+
+QList<WorkerData > Worker::getInitData()
+{
+    WorkerData initData;
+    initData.m_name = QString("孙一");
+    initData.m_gender = 0;
+    initData.m_age = 18;
+    initData.m_birthday = QString("1999/9/1");
+    initData.m_title = QString("职工");
+    initData.m_Education = QString("本科");
+    initData.m_salary = 6888;
+    initData.m_isMarried = 0;
+    initDataList.append(initData);
+
+    initData.m_name = QString("李二");
+    initDataList.append(initData);
+    initData.m_name = QString("张三");
+    initDataList.append(initData);
+    initData.m_name = QString("赵四");
+    initDataList.append(initData);
+    initData.m_name = QString("王五");
+    initDataList.append(initData);
+
+    return initDataList;
+}

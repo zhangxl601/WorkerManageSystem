@@ -35,11 +35,13 @@ public:
 
     bool isValid(){return mIsValid;}
 
+    QList<WorkerData> getInitData();
 
     QString origInfo;
     QStringList infoList;
     WorkerData m_data;
 
+    QList<WorkerData> initDataList;
     bool mIsValid;
 
 private:
