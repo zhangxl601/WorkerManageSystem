@@ -1,5 +1,6 @@
 #include "workersmanage.h"
 #include <QTextStream>
+
 static const QStringList horiHeader = QStringList()<< "编号" <<"姓名"<<"性别"<<"年龄"<<"生日"<<"职称"<<"教育背景"<<"工资"<<"婚姻情况";
 int gRole = Qt::UserRole+99;
 WorkersManage::WorkersManage(QObject *parent) : QObject(parent)
@@ -21,21 +22,36 @@ void WorkersManage::addWorker(const WorkerData &data)
     updateModel(workers);
 }
 
-bool WorkersManage::findWorker(QString name)
+bool WorkersManage::findWorker(FindDlg::Find_Type type,QString name)
 {
-    QList<Worker*> listTmp;
-    for (auto i:workers) {
-        if(i->m_data.m_name != name){
-            continue;
-        }else {
-            listTmp.append(i);
+    switch (type) {
+    case FindDlg::E_All_Workers:{
+        updateModel(getWorkers());
+        return true;
+    }
+    case FindDlg::E_Name_Find:{//useful
+        QList<Worker*> listTmp;
+        for (auto i:workers) {
+            if(i->m_data.m_name != name){
+                continue;
+            }else {
+                listTmp.append(i);
+            }
         }
+        if(listTmp.isEmpty()){
+            return false;
+        }
+        updateModel(listTmp);
+        return true;
     }
-    if(listTmp.isEmpty()){
-        return false;
+        //以下完成在finddlg
+    case FindDlg::E_Birth_Find:{}
+        break;
+    case FindDlg::E_Married_Find:{}
+        break;
+
     }
-    updateModel(listTmp);
-    return true;
+
 }
 
 bool WorkersManage::removeWorker(int number)

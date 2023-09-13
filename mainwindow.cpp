@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include "finddlg.h"
 extern int gRole;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,10 +32,10 @@ MainWindow::MainWindow(QWidget *parent) :
     findDlg->hide();
     removeDlg = new RemoveDlg(this);
     removeDlg->setManage(&workersManager);
+    findDlg->setManage(&workersManager);
     modifyDlg = new ModifyDlg(this);
     connect(findDlg,&FindDlg::Sig_find,this,&MainWindow::findResult);
-    connect(findDlg,&FindDlg::Sig_Cancel,this,&MainWindow::displayAllWorker);
-    connect(findDlg,&FindDlg::finished,this,&MainWindow::displayAllWorker);
+
 
     Worker work;
     QList<WorkerData > list = work.getInitData();
@@ -50,14 +51,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::findResult()
 {
-    if(!workersManager.findWorker(findDlg->getWorker())){
+    if(!workersManager.findWorker(FindDlg::E_Name_Find,findDlg->getWorker())){
         QMessageBox::about(this,tr("提示"),tr("未查询到该职工!请核实姓名"));
     }
-}
-
-void MainWindow::displayAllWorker()
-{
-    workersManager.updateModel(workersManager.getWorkers());
 }
 
 void MainWindow::on_openfile_triggered()

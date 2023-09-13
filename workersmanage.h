@@ -5,6 +5,7 @@
 #include "workerinfo.h"
 #include <QList>
 #include <QStandardItemModel>
+#include "finddlg.h"
 class WorkersManage : public QObject
 {
     Q_OBJECT
@@ -12,7 +13,7 @@ public:
     explicit WorkersManage(QObject *parent = nullptr);
 
     void addWorker(const WorkerData &data);
-    bool findWorker(QString name);
+    bool findWorker(FindDlg::Find_Type type,QString name);
     bool removeWorker(int number);
     void modifyWorker(const WorkerData &data);
 

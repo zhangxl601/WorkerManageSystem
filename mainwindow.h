@@ -22,7 +22,6 @@ public:
     ~MainWindow();
 
     void findResult();
-    void displayAllWorker();
 private slots:
     void on_openfile_triggered();
 
