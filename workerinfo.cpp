@@ -44,15 +44,16 @@ Worker* Worker::parseString(const QString str)
         return person;
     }
 
-    person->m_data.m_name =list[0];
-    person->m_data.m_age = list[2].toInt();
-    person->m_data.m_gender = list[1].toInt();
-    person->m_data.m_birthday = list[3];
-    person->m_data.m_title = list[4];
-    person->m_data.m_Education = list[5];
-    person->m_data.m_salary = list[6].toInt();
-    person->m_data.m_isMarried = list[7].toInt();
-    person->m_data.m_number = list[8].toInt();
+    person->m_data.m_number = list[0].toInt();
+    person->m_data.m_name =list[1];
+    person->m_data.m_gender = list[2].toInt();
+    person->m_data.m_age = list[3].toInt();
+    person->m_data.m_birthday = list[4];
+    person->m_data.m_title = list[5];
+    person->m_data.m_Education = list[6];
+    person->m_data.m_salary = list[7].toInt();
+    person->m_data.m_isMarried = list[8].toInt();
+
     person->infoList = list;
     return person;
 }
@@ -60,6 +61,7 @@ Worker* Worker::parseString(const QString str)
 QString Worker::getCsvString()
 {
     QStringList list;
+    list << QString::number(m_data.m_number);
     list << m_data.m_name;
     list << QString::number(m_data.m_gender);
     list << QString::number(m_data.m_age);
@@ -68,7 +70,7 @@ QString Worker::getCsvString()
     list << m_data.m_Education;
     list << QString::number(m_data.m_salary);
     list << QString::number(m_data.m_isMarried);
-    list << QString::number(m_data.m_number);
+
     return list.join(",");
 }
 

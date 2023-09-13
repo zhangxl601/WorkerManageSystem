@@ -13,7 +13,7 @@ public:
 
     void addWorker(const WorkerData &data);
     bool findWorker(QString name);
-    void removeWorker(QString name);
+    bool removeWorker(int number);
     void modifyWorker(const WorkerData &data);
 
     void openFile(QString fileName);

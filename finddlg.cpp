@@ -6,7 +6,7 @@ FindDlg::FindDlg(QWidget *parent) :
     ui(new Ui::FindDlg)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("查询个人信息"));
+    setWindowTitle(tr("查询职工信息"));
 }
 
 FindDlg::~FindDlg()

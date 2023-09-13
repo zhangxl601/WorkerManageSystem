@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>remove.webp</file>
-        <file>add.jpg</file>
-        <file>remove.png</file>
+        <file>image/delete_male_icon.png</file>
+        <file>image/human_male_user_icon.png</file>
+        <file>image/male_search_user_icon.png</file>
+        <file>image/new_add_plus_user_icon.png</file>
     </qresource>
 </RCC>

@@ -7,6 +7,7 @@ namespace Ui {
 class RemoveDlg;
 }
 
+class WorkersManage;
 class RemoveDlg : public QDialog
 {
     Q_OBJECT
@@ -14,14 +15,20 @@ class RemoveDlg : public QDialog
 public:
     explicit RemoveDlg(QWidget *parent = nullptr);
     ~RemoveDlg();
-    QString getDeleteName();
+
+    // 获取职工编号
+    int getDeleteNumber();
+
+    void setManage(WorkersManage *value);
 
 private slots:
     void on_txDelete_clicked();
 
 private:
     Ui::RemoveDlg *ui;
-    QString deleteName;
+    int deleteNumber;
+
+    WorkersManage *manage;
 };
 
 #endif // REMOVEDLG_H

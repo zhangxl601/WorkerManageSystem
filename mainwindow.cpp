@@ -7,17 +7,21 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QStandardPaths>
 extern int gRole;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle(tr("职工管理系统"));
+
     QHeaderView *headerView = ui->display_table->horizontalHeader();
     headerView->setSectionResizeMode(QHeaderView::Stretch);
     ui->display_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->display_table->setSelectionMode(QAbstractItemView::SingleSelection);//行选中
     ui->display_table->setSelectionBehavior(QAbstractItemView::SelectRows); //整行选中的方式
+    ui->display_table->verticalHeader()->setVisible(false);
     QStandardItemModel* model = workersManager.getModel();
     ui->display_table->setModel(model);
 
@@ -26,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     findDlg = new FindDlg(this);
     findDlg->hide();
     removeDlg = new RemoveDlg(this);
+    removeDlg->setManage(&workersManager);
     modifyDlg = new ModifyDlg(this);
     connect(findDlg,&FindDlg::Sig_find,this,&MainWindow::findResult);
     connect(findDlg,&FindDlg::Sig_Cancel,this,&MainWindow::displayAllWorker);
@@ -46,7 +51,7 @@ MainWindow::~MainWindow()
 void MainWindow::findResult()
 {
     if(!workersManager.findWorker(findDlg->getWorker())){
-        QMessageBox::about(this,tr("提示"),tr("未查询到该员工!请核实姓名"));
+        QMessageBox::about(this,tr("提示"),tr("未查询到该职工!请核实姓名"));
     }
 }
 
@@ -58,7 +63,7 @@ void MainWindow::displayAllWorker()
 void MainWindow::on_openfile_triggered()
 {
     //打开文件夹
-    QString fileName = QFileDialog::getOpenFileName(this,tr("打开文件"),"/","*.csv");
+    QString fileName = QFileDialog::getOpenFileName(this,tr("打开文件"),QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/职工信息.csv",tr("CSV Files (*.csv)"));
     if(fileName.isEmpty()){
         return;
     }
@@ -69,7 +74,7 @@ void MainWindow::on_openfile_triggered()
 void MainWindow::on_savefile_triggered()
 {
 //    QString fileName = QFileDialog::getSaveFileName(this,);
-    QString fileName = QFileDialog::getSaveFileName(this, tr("保存文件"), "/", tr("CSV Files (*.csv);;All Files (*)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("保存文件"),  QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/职工信息.csv", tr("CSV Files (*.csv);All Files (*)"));
     if(fileName.isEmpty()){
         return;
     }
@@ -96,12 +101,19 @@ void MainWindow::on_remove_triggered()
 {
     auto i = ui->display_table->selectionModel()->selectedRows();
     if(!i.isEmpty()){
-        QString name = workersManager.getModel()->data(i[0]).toString();
-        workersManager.removeWorker(name);
+        int number = workersManager.getModel()->data(i[0]).toInt();
+
+        bool ret = workersManager.removeWorker(number);
+        if(!ret){
+            QMessageBox::information(this, "提示", "未找到该编号对应的职工!");
+        }
+        else{
+            QMessageBox::information(this, "提示", "删除成功!");
+        }
     }
     else{
         if(RemoveDlg::Accepted == removeDlg->exec()){
-            workersManager.removeWorker(removeDlg->getDeleteName());
+//            workersManager.removeWorker(removeDlg->getDeleteNumber());
         }
     }
 }
@@ -118,6 +130,6 @@ void MainWindow::on_modify_triggered()
             workersManager.modifyWorker(modifyDlg->getWorker());
         }
     }else {
-        QMessageBox::about(this,tr("提示"),tr("未选中需要修改员工!请选择员工!"));
+        QMessageBox::about(this,tr("提示"),tr("请选择要修改的职工!"));
     }
 }

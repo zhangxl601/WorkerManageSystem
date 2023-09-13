@@ -5,7 +5,7 @@
 
 struct WorkerData
 {
-
+    int m_number;//编号
     QString m_name;
     int m_gender;//性别0:F 1:M
     int m_age;
@@ -14,7 +14,6 @@ struct WorkerData
     QString m_Education;
     int m_salary;
     int m_isMarried;//0:N 1:Y
-    int m_number;//编号
 
 };
 

@@ -6,32 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>327</width>
-    <height>76</height>
+    <width>363</width>
+    <height>95</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="spBoxNumber">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="text">
-      <string>姓名</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="txName">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -40,7 +30,7 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="2" column="2">
     <widget class="QPushButton" name="txDelete">
      <property name="minimumSize">
       <size>
@@ -50,6 +40,22 @@
      </property>
      <property name="text">
       <string>确认删除</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label">
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>请输入要删除的职工编号：</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>

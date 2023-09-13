@@ -6,6 +6,7 @@ ModifyDlg::ModifyDlg(QWidget *parent) :
     ui(new Ui::ModifyDlg)
 {
     ui->setupUi(this);
+    setWindowTitle(tr("修改职工信息"));
     ui->txName->setEnabled(false);
 }
 

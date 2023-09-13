@@ -1,6 +1,6 @@
 #include "workersmanage.h"
 #include <QTextStream>
-static const QStringList horiHeader = QStringList()<<"姓名"<<"性别"<<"年龄"<<"生日"<<"职称"<<"教育背景"<<"工资"<<"婚姻情况";
+static const QStringList horiHeader = QStringList()<< "编号" <<"姓名"<<"性别"<<"年龄"<<"生日"<<"职称"<<"教育背景"<<"工资"<<"婚姻情况";
 int gRole = Qt::UserRole+99;
 WorkersManage::WorkersManage(QObject *parent) : QObject(parent)
 {
@@ -38,18 +38,27 @@ bool WorkersManage::findWorker(QString name)
     return true;
 }
 
-void WorkersManage::removeWorker(QString name)
+bool WorkersManage::removeWorker(int number)
 {
+    bool ret = false;
     QList<Worker*> listTmp;
     for (auto i:workers) {
-        if(i->m_data.m_name != name){
+        if(i->m_data.m_number != number){
             listTmp.append(i);
-        }else {
-
+        }
+        else{
+            ret = true;
         }
     }
-    workers = listTmp;
-    updateModel(workers);
+
+    if(ret){
+        workers = listTmp;
+        updateModel(workers);
+    }
+
+
+
+    return ret;
 }
 
 void WorkersManage::modifyWorker(const WorkerData &data)
@@ -135,9 +144,9 @@ void WorkersManage::updateModel(QList<Worker*> _workers)
         Worker* work = _workers[i];
         model->setData(model->index(i,0), (long long)(work), gRole);
         for (int j=0;j<work->infoList.size();j++) {
-            switch (j) {//1:性别判断  7:婚姻判断
-            case 1:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("男")):model->setData(model->index(i,j),tr("女"), Qt::DisplayRole);}break;
-            case 7:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("未婚")):model->setData(model->index(i,j),tr("已婚"), Qt::DisplayRole);}break;
+            switch (j) {//2:性别判断  8:婚姻判断
+            case 2:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("男")):model->setData(model->index(i,j),tr("女"), Qt::DisplayRole);}break;
+            case 8:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("未婚")):model->setData(model->index(i,j),tr("已婚"), Qt::DisplayRole);}break;
             default: model->setData(model->index(i,j),work->infoList[j], Qt::DisplayRole);break;
             }
         }
