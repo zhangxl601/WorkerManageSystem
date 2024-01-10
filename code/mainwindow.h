@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -8,6 +8,7 @@
 #include "finddlg.h"
 #include "removedlg.h"
 #include "modifydlg.h"
+#include "loginform.h"
 class WorkerInfo;
 namespace Ui {
 class MainWindow;
@@ -22,6 +23,8 @@ public:
     ~MainWindow();
 
     void findResult();
+
+    void successLogin();
 private slots:
     void on_openfile_triggered();
 
@@ -43,6 +46,8 @@ private:
     FindDlg *findDlg;
     RemoveDlg* removeDlg;
     ModifyDlg* modifyDlg;
+
+    LoginForm m_login;
 };
 
 #endif // MAINWINDOW_H

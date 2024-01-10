@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "workerinfo.h"
 #include <QAction>
@@ -15,7 +15,30 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    m_login.show();
+    connect(&m_login,&LoginForm::loginSuccess,this,&MainWindow::successLogin);
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::findResult()
+{
+    if(!workersManager.findWorker(FindDlg::E_Name_Find,findDlg->getWorker())){
+        QMessageBox::about(this,tr("提示"),tr("未查询到该职工!请核实姓名"));
+    }
+}
+
+void MainWindow::successLogin()
+{
+    m_login.close();
+    this->show();
     setWindowTitle(tr("职工管理系统"));
+    //    setWindowIcon(QIcon(":../code/image/male_search_user_icon.png"));
 
     QHeaderView *headerView = ui->display_table->horizontalHeader();
     headerView->setSectionResizeMode(QHeaderView::Stretch);
@@ -41,18 +64,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QList<WorkerData > list = work.getInitData();
     for(auto i:list){
         workersManager.addWorker(i);
-    }
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-void MainWindow::findResult()
-{
-    if(!workersManager.findWorker(FindDlg::E_Name_Find,findDlg->getWorker())){
-        QMessageBox::about(this,tr("提示"),tr("未查询到该职工!请核实姓名"));
     }
 }
 

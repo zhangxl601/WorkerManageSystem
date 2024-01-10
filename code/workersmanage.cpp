@@ -1,4 +1,5 @@
-#include "workersmanage.h"
+﻿#include "workersmanage.h"
+#include <QFile>
 #include <QTextStream>
 
 static const QStringList horiHeader = QStringList()<< "编号" <<"姓名"<<"性别"<<"年龄"<<"生日"<<"职称"<<"教育背景"<<"工资"<<"婚姻情况";
@@ -71,8 +72,6 @@ bool WorkersManage::removeWorker(int number)
         workers = listTmp;
         updateModel(workers);
     }
-
-
 
     return ret;
 }
@@ -160,7 +159,7 @@ void WorkersManage::updateModel(QList<Worker*> _workers)
         Worker* work = _workers[i];
         model->setData(model->index(i,0), (long long)(work), gRole);
         for (int j=0;j<work->infoList.size();j++) {
-            switch (j) {//2:性别判断  8:婚姻判断
+            switch (j) {
             case 2:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("男")):model->setData(model->index(i,j),tr("女"), Qt::DisplayRole);}break;
             case 8:{ work->infoList[j].toInt() ==0?model->setData(model->index(i,j),tr("未婚")):model->setData(model->index(i,j),tr("已婚"), Qt::DisplayRole);}break;
             default: model->setData(model->index(i,j),work->infoList[j], Qt::DisplayRole);break;

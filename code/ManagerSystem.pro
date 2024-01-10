@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    loginform.cpp \
         main.cpp \
         mainwindow.cpp \
     workerinfo.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     modifydlg.cpp
 
 HEADERS += \
+    loginform.h \
         mainwindow.h \
     workerinfo.h \
     removedlg.h \
@@ -44,6 +46,7 @@ HEADERS += \
     modifydlg.h
 
 FORMS += \
+    loginform.ui \
         mainwindow.ui \
     addworkdlg.ui \
     removedlg.ui \
